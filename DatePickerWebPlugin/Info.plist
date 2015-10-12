@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIconFile</key>
+	<string></string>
+	<key>CFBundleIdentifier</key>
+	<string>com.philipefatio.widget.To Do.DatePickerWebPlugin</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>${PRODUCT_NAME}</string>
+	<key>CFBundlePackageType</key>
+	<string>WBPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>NSPrincipalClass</key>
+	<string>DatePickerWebPluginView</string>
+	<key>WebPluginName</key>
+	<string>DatePickerWebPluginView</string>
+	<key>WebPluginDescription</key>
+	<string>Displays a NSDatePicker to choose dates</string>
+	<key>WebPluginMIMETypes</key>
+	<dict>
+		<key>application/x-datepicker</key>
+		<dict>
+			<key>WebPluginExtensions</key>
+			<array>
+				<string>datepicker</string>
+			</array>
+			<key>WebPluginTypeDescription</key>
+			<string>DatePickerWebPluginView</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

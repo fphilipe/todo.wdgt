@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AllowFileAccessOutsideOfWidget</key>
+	<true/>
+	<key>AllowInternetPlugins</key>
+	<true/>
+	<key>AllowNetworkAccess</key>
+	<true/>
+	<key>AllowSystem</key>
+	<true/>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleDisplayName</key>
+	<string>To Do Widget</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.philipefatio.widget.To Do</string>
+	<key>CFBundleName</key>
+	<string>To Do Widget</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.1</string>
+	<key>CFBundleVersion</key>
+	<string>2.1</string>
+	<key>CloseBoxInsetX</key>
+	<integer>8</integer>
+	<key>CloseBoxInsetY</key>
+	<integer>15</integer>
+	<key>Height</key>
+	<integer>328</integer>
+	<key>MainHTML</key>
+	<string>To Do.html</string>
+	<key>Plugin</key>
+	<string>ToDoPlugin.widgetplugin</string>
+	<key>Width</key>
+	<integer>240</integer>
+</dict>
+</plist>

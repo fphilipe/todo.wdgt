@@ -1,0 +1,861 @@
+/* GENERAL */
+* {
+margin:0;
+padding:0;
+}
+
+body {
+cursor:default;
+}
+
+#back {
+display:none;
+font:bold 11px/1.3 'Helvetica Neue', Helvetica, "Lucida Grande", sans-serif;
+color:#fff;
+background:url(Images/Back.png) no-repeat;
+position:absolute;
+right:0;
+bottom:0;
+left:0;
+top:0;
+padding:30px 21px 28px;
+}
+
+#back p {
+margin:1em 0;
+}
+
+#front {
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background-image:url(Images/shadow-bottom-left.png), url(Images/shadow-bottom-right.png), url(Images/shadow-top-left.png), url(Images/shadow-top-right.png);
+background-repeat:no-repeat, no-repeat, no-repeat, no-repeat;
+background-position:0% 100%, 100% 100%, 0% 0%, 100% 0%;
+}
+
+/* BOTTOM TOOL BAR */
+#bottombar {
+text-align:center;
+position:absolute;
+bottom:0;
+left:25px;
+right:25px;
+height:32px;
+background:url(Images/bottom-bar.png) repeat-x;
+}
+
+#bottombar > div {
+-apple-dashboard-region:dashboard-region(control circle);
+display:inline-block;
+margin:2px 1px;
+height:16px;
+width:16px;
+-webkit-border-radius:8px;
+background:url(Images/add.png) no-repeat 50% 50%;
+}
+
+#bottombar > div:hover {
+background-color:rgba(255, 255, 255, 0.2);
+}
+
+#bottombar > div:active {
+background-color:rgba(0, 0, 0, 0.2);
+opacity:0.75;
+}
+
+div > #remove {
+background-image:url(Images/remove.png);
+}
+
+div > #edit {
+background-image:url(Images/edit.png);
+}
+
+div > #calendar select {
+opacity:0;
+position:absolute;
+top:0;
+left:-50%;
+}
+
+/* FRONT DESIGN */
+#shadowleft {
+position:absolute;
+left:0;
+width:8px;
+top:32px;
+bottom:32px;
+background:url(Images/shadow-left.png) repeat-y;
+}
+
+#shadowright {
+position:absolute;
+right:0;
+width:8px;
+top:32px;
+bottom:32px;
+background:url(Images/shadow-right.png) repeat-y;
+}
+
+#frontbg {
+position:absolute;
+left:8px;
+background-color:rgb(254, 248, 189);
+top:32px;
+right:8px;
+width:auto;
+bottom:32px;
+height:auto;
+overflow:hidden;
+}
+
+#frontbg img {
+position:absolute;
+min-height:200px;
+height:100%;
+width:100%;
+}
+
+#scrollarea {
+position:absolute;
+color:black;
+left:0;
+right:0;
+width:auto;
+bottom:0;
+height:auto;
+top:0;
+}
+
+/* remove a 1px margin that is misplacing the scrollbar */
+#scrollbar > div > div > div {
+margin-left:-1px;
+}
+
+#scrollbar {
+position:absolute;
+right:2px;
+width:17px;
+bottom:6px;
+top:6px;
+}
+
+div.note-rule-vertical {
+position:absolute;
+width:1px;
+height:100%;
+background-color:rgba(191, 33, 8, 0.2);
+}
+
+#topfade {
+position:absolute;
+top:32px;
+left:8px;
+right:8px;
+height:4px;
+background:url(Images/top-fade.png) repeat-x;
+}
+
+#bottomfade {
+position:absolute;
+bottom:32px;
+left:8px;
+right:8px;
+height:2px;
+background:url(Images/bottom-fade.png) repeat-x 0 0;
+}
+
+/* RINGS */
+#rings {
+height:32px;
+width:200px;
+margin:0 auto;
+background:url(Images/ring.png) repeat-x;
+}
+
+#ringsleft, #ringsright {
+position:absolute;
+top:0;
+width:5px;
+height:32px;
+background:url(Images/shadow-top.png) repeat-x;
+}
+
+#ringsleft {
+left:15px;
+}
+
+#ringsright {
+right:15px;
+}
+
+#ringsresizing {
+position:absolute;
+top:0;
+left:15px;
+right:15px;
+height:32px;
+background:url(Images/ringsresizing.png) no-repeat 50% 50%;
+display:none;
+}
+
+/* RESIZE EDGE AND INFO BUTTON */
+#resize {
+position:absolute;
+bottom:16px;
+right:12px;
+-apple-dashboard-region:dashboard-region(control rectangle);
+}
+
+#calendar {
+position:absolute;
+right:25px;
+bottom:12px;
+-apple-dashboard-region:dashboard-region(control circle);
+display:inline-block;
+margin:2px 1px;
+height:16px;
+width:16px;
+-webkit-border-radius:8px;
+background:url(Images/calendar.png) no-repeat 50% 50%;
+overflow:hidden;
+}
+
+#calendar:hover {
+background-color:rgba(255, 255, 255, 0.2);
+}
+
+#infobutton {
+position:absolute;
+width:13px;
+height:13px;
+left:12px;
+bottom:16px;
+}
+
+/* CHECK BOX */
+/* COLOR BOX FOR COLORED CHECKBOXES */
+div.checkbox > div {
+width:12px;
+height:12px;
+margin:3px;
+margin-bottom:-18px;
+}
+
+/* strike through completed tasks */
+#list[strikethrough="true"] div.checkbox[checked="true"] + div + p > span {
+text-decoration:line-through;
+}
+
+div.checkbox {
+-apple-dashboard-region:dashboard-region(control rectangle);
+width:18px;
+height:18px;
+overflow:hidden;
+float:left;
+margin-left:2px;
+}
+
+div.checkbox > div + div {
+margin-left:0;
+width:18px;
+height:18px;
+background:url(Images/unchecked-box.png) no-repeat 50% 100%;
+}
+
+div.checkbox[overdue="true"]:hover > div + div {
+background-image:url(Images/unchecked-box.png);
+}
+
+div.checkbox[checked="true"] > div + div, div.checkbox[overdue="true"][checked="true"] > div + div, div.checkbox[overdue="true"][checked="true"]:hover > div + div {
+background-image:url(Images/checked-box.png);
+}
+
+div.checkbox:active > div + div, div.checkbox[overdue="true"]:active > div + div {
+background-image:url(Images/unchecked-pressed-box.png);
+}
+
+div.checkbox[checked="true"]:active > div + div, div.checkbox[overdue="true"][checked="true"]:active > div + div {
+background-image:url(Images/checked-pressed-box.png);
+}
+
+div.checkbox[overdue="true"] > div + div {
+background-image:url(Images/overdue-box.png);
+}
+
+/* PRIORITY */
+#list[showpriority="false"] div[priority] {
+display:none;
+}
+
+div[priority] {
+margin-top: 2px;
+margin-right: 2px;
+margin-left: -3px;
+width:14px;
+height:14px;
+background:url(Images/priority-none.png) no-repeat 50% 50%;
+float:right;
+overflow:hidden;
+}
+
+div[priority]:hover {
+background-image:url(Images/priority-none-hover.png);
+}
+
+div[priority="9"] {
+background-image:url(Images/priority-low.png);
+}
+
+div[priority="9"]:hover {
+background-image:url(Images/priority-low-hover.png);
+}
+
+div[priority="5"] {
+background-image:url(Images/priority-med.png);
+}
+
+div[priority="5"]:hover {
+background-image:url(Images/priority-med-hover.png);
+}
+
+div[priority="1"] {
+background-image:url(Images/priority-high.png);
+}
+
+div[priority="1"]:hover {
+background-image:url(Images/priority-high-hover.png);
+}
+
+div[priority] select {
+opacity:0;
+}
+
+/* LIST AND IT'S SIZES */
+#list {
+min-height:100%;
+width:auto;
+background-image:url(Images/ruler-l.png);
+padding-top:3px;
+-webkit-box-sizing:border-box;
+}
+
+#list[size="xl"], #list[size="xxl"] {
+padding-top:4px;
+}
+
+#list[size="xxs"] {
+font-size:12px;
+background-image:url(Images/ruler-xxs.png);
+line-height:16px;
+}
+#list[size="xxs"] .checkbox { margin-top: -1px; margin-bottom: -1px; }
+#list[size="xxs"] div[priority] { margin-top: 0; }
+
+#list[size="xs"] {
+font-size:13px;
+background-image:url(Images/ruler-xs.png);
+line-height:17px;
+}
+#list[size="xs"] .checkbox { margin-top: -1px; margin-bottom: -1px; }
+#list[size="xs"] div[priority] { margin-top: 0; }
+
+#list[size="s"] {
+font-size:14px;
+background-image:url(Images/ruler-s.png);
+line-height:18px;
+}
+#list[size="s"] div[priority] { margin-top: 1px; }
+
+#list[size="m"] {
+font-size:15px;
+background-image:url(Images/ruler-m.png);
+line-height:19px;
+}
+
+#list[size="l"] {
+font-size:16px;
+background-image:url(Images/ruler-l.png);
+line-height:20px;
+}
+#list[size="l"] .checkbox { margin-top: 1px; }
+#list[size="l"] div[priority] { margin-top: 3px; }
+
+#list[size="xl"] {
+font-size:17px;
+background-image:url(Images/ruler-xl.png);
+line-height:21px;
+}
+#list[size="xl"] .checkbox { margin-top: 1px; }
+#list[size="xl"] div[priority] { margin-top: 3px; }
+
+#list[size="xxl"] {
+font-size:18px;
+background-image:url(Images/ruler-xxl.png);
+line-height:22px;
+}
+#list[size="xxl"] .checkbox { margin-top: 2px; }
+#list[size="xxl"] div[priority] { margin-top: 3px; }
+
+#list li {
+list-style: none;
+clear: both;
+overflow:hidden;
+}
+
+#list li p {
+overflow:hidden;
+text-overflow:ellipsis;
+margin-right: 6px;
+padding-left: 8px;
+}
+
+#list li p > strong {
+font-weight:bold;
+display:inline-block;
+width:100%;
+overflow:hidden;
+white-space:nowrap;
+text-overflow:ellipsis;
+}
+
+#list li p span {
+white-space:pre-wrap;
+}
+
+#list[singleline="true"] li p {
+white-space:nowrap;
+}
+
+#list[singleline="true"] li p span {
+white-space:pre;
+}
+
+#list[scrollbar="true"] {
+margin-right:19px;
+}
+
+#list li[selected="true"] p > span {
+background-color:#E9CA88;
+/*background-color:rgba(200, 80, 40, 0.25);*/
+}
+
+#list li[selected="true"] p > strong > strong {
+background-color:#E9CA88;
+/*background-color:rgba(200, 80, 40, 0.25);*/
+}
+
+/* HUD CONTENTS */
+#deleteConfirmation, #calendarSelection, #updateInformation, #genericInformation, #newCalendarPrompt, #taskInfoEditing {
+font:bold 11px/20px 'Lucida Grande', sans-serif;
+color: #fff;
+position:absolute;
+left:0px;
+right:0px;
+bottom:12px;
+text-align:center;
+margin-bottom:18px;
+overflow:hidden;
+display:none;
+}
+
+#updateInformation p {
+max-width:174px;
+}
+
+#calendarSelection select {
+color:#000;
+-apple-dashboard-region:dashboard-region(control rectangle);
+text-shadow:0 1px 0 #fff;
+background:rgba(0,0,0,0.3);
+border-width:0 15px 0 8px;
+vertical-align:top;
+height:20px;
+text-shadow:0 1px 0 rgba(0, 0, 0, 0.65);
+color:#fff;
+-webkit-border-image:url('Images/hudselect-blue.png') 0 15 0 8;
+font-weight:bold;
+max-width:174px;
+}
+
+#calendarSelection select:focus {
+outline:none;
+}
+
+.hud input, .hud textarea {
+position:relative;
+z-index:9999;
+}
+
+#taskInfoEditing p:first-child, #taskInfoEditing p + div {
+text-align: left;
+}
+
+#taskInfoEditing input[type="checkbox"] {
+display: inline-block;
+margin-left: 5px;
+margin-top:4px;
+margin-right: 5px;
+}
+
+#taskInfoEditing textarea {
+margin-bottom:-5px;
+overflow:hidden;
+width: 100%;
+-webkit-box-sizing:border-box;
+}
+
+#taskInfoEditing label[for="notesinput"] {
+display:block;
+line-height:1;
+margin-bottom: 4px;
+}
+
+#taskInfoEditing input[type="text"] {
+width: 100%;
+-webkit-box-sizing:border-box;
+}
+
+#taskInfoEditing div.hud {
+min-width:200px;
+width:60%;
+}
+
+#duedateplaceholder {
+-apple-dashboard-region:dashboard-region(control rectangle);
+}
+
+object {
+position: absolute;
+height: 22px;
+display: inline-block;
+left: 23px;
+bottom: 27px;
+-apple-dashboard-region:dashboard-region(control rectangle);
+}
+
+
+/* HUD BUTTON */
+.hudbutton {
+display:block;
+font:bold 11px/20px 'Lucida Grande', sans-serif;
+color:#000;
+-apple-dashboard-region:dashboard-region(control rectangle);
+text-shadow:0 1px 0 #fff;
+border-width:0 8px;
+-webkit-border-image:url('Images/hudbutton.png') 0 8 0 8;
+vertical-align:top;
+height:20px;
+padding:0 3px;
+min-width:54px;
+}
+
+.hudbutton:active {
+-webkit-border-image:url('Images/hudbutton-pressed.png') 0 8 0 8;
+line-height:21px;
+}
+
+.hudbutton.red {
+text-shadow:0 1px 0 rgba(0, 0, 0, 0.65);
+color:#fff;
+-webkit-border-image:url('Images/hudbutton-red.png') 0 8 0 8;
+}
+
+.hudbutton.red:active {
+color:#eee;
+-webkit-border-image:url('Images/hudbutton-red-pressed.png') 0 8 0 8;
+}
+
+.hudbutton.blue {
+text-shadow:0 1px 0 rgba(0, 0, 0, 0.65);
+color:#fff;
+-webkit-border-image:url('Images/hudbutton-blue.png') 0 8 0 8;
+}
+
+.hudbutton.blue:active {
+color:#eee;
+-webkit-border-image:url('Images/hudbutton-blue-pressed.png') 0 8 0 8;
+}
+
+/* HUD */
+#protection1 {
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:32px;
+background:rgba(0,0,0,0);
+display:none;
+}
+
+#protection2 {
+position:absolute;
+left:0;
+right:0;
+bottom:0;
+height:32px;
+background:rgba(0,0,0,0);
+display:none;
+}
+
+.hud {
+display:inline-block;
+text-align:left;
+}
+.hud > div:first-child {
+height:18px;
+margin:0 18px;
+background:url('Images/hud-side-t.png') repeat-x;
+}
+.hud > div:first-child::before {
+display:inline-block;
+margin-left:-18px;
+height:18px;
+width:18px;
+content:url('Images/hud-corner-t-l.png');
+}
+.hud > div:first-child::after {
+display:inline-block;
+float:right;
+margin-right:-18px;
+height:18px;
+width:18px;
+content:url('Images/hud-corner-t-r.png');
+}
+.hud > div:first-child + div {
+text-align:center;
+background:rgba(0,0,0,0.7);
+position:relative;
+margin:0 18px;
+}
+.hud > div:first-child + div > * + * {
+margin-top:7px;
+}
+.hud > div:first-child + div::before {
+margin-left:-18px;
+position:absolute;
+top:0;
+bottom:0;
+width:18px;
+background:url('Images/hud-side-l.png') repeat-y;
+content:".";
+color:rgba(0,0,0,0);
+}
+.hud > div:first-child + div::after {
+position:absolute;
+right:0;
+top:0;
+bottom:0;
+margin-right:-18px;
+height:100%;
+width:18px;
+background:url('Images/hud-side-r.png') repeat-y;
+content:".";
+color:rgba(0,0,0,0);
+}
+.hud > div:first-child + div + div {
+height:25px;
+margin:0 18px;
+background:repeat-x 50% 50%;
+}
+.hud.center > div:first-child + div + div {
+background-image:url('Images/hud-bottom-center.png');
+}
+.hud.left > div:first-child + div + div {
+background-image:url('Images/hud-bottom-left.png');
+}
+.hud.none > div:first-child + div + div {
+background-image:url('Images/hud-bottom.png');
+}
+.hud.right > div:first-child + div + div {
+background-image:url('Images/hud-bottom-right.png');
+}
+.hud > div:first-child + div + div::before {
+display:inline-block;
+margin-left:-18px;
+height:25px;
+width:18px;
+content:url('Images/hud-corner-b-l.png');
+}
+.hud > div:first-child + div + div::after {
+display:inline-block;
+float:right;
+margin-right:-18px;
+height:25px;
+width:18px;
+content:url('Images/hud-corner-b-r.png');
+}
+
+/* BACK */
+#fontSizePreference {
+float:right;
+}
+
+#back #fontFamilyPreference {
+width: 142px !important;
+}
+
+#back #otherFontFamilyPreference {
+-webkit-border-top-left-radius: 4px;
+-webkit-border-bottom-left-radius: 4px;
+border:none;
+height:15px;
+width: 113px;
+padding:0 5px;
+margin-left:1px;
+display: none;
+margin-top: -17px;
+position:relative;
+z-index:9999;
+outline-offset:-1px;
+}
+
+#loc-sortby {
+padding-right:4px;
+}
+
+input[type="checkbox"] {
+display:block;
+float:left;
+margin-top:1px;
+}
+
+input[type="checkbox"] + span {
+display:block;
+margin-left:17px;
+}
+
+#limitationPreference {
+padding-left:17px;
+}
+
+#limitationPreference > label > span {
+margin-right:-14px;
+}
+
+#limitationPreference > input {
+margin-right:-13px;
+margin-left:17px;
+}
+
+#limitationPreference > span {
+margin-left:17px;
+}
+
+#limitationPreference > * {
+display:inline-block;
+}
+
+#completedTasksLimitationPreference {
+width:20px;
+text-align:right;
+}
+
+#preferences2 {
+display:none;
+}
+
+#preferencesnav {
+margin:10px -11px 15px;
+padding:5px 0 4px 0;
+background:rgba(0,0,0,.2);
+-webkit-box-shadow:0 1px 0 #333;
+text-align:center;
+}
+
+#preferencesnav div {
+display:inline-block;
+font-weight:bold;
+font-size:12px;
+line-height:16px;
+padding:0 7px;
+-apple-dashboard-region:dashboard-region(control rectangle);
+}
+
+#preferencesnav div.selected {
+-webkit-border-radius:8px;
+background:rgb(133,133,133);
+-webkit-box-shadow:0 -1px 0 rgba(0,0,0,.35);
+text-shadow:0 1px 0 rgba(0,0,0,.35);
+}
+
+#preferencesnav div.unselected {
+text-shadow:0 -1px 0 rgba(0,0,0,.35);
+}
+
+#preferencesnav div.unselected:hover {
+text-shadow:none;
+background-color:rgba(255,255,255,.2);
+-webkit-border-radius:8px;
+}
+
+#general {
+margin-right:25px;
+}
+
+#glassbutton {
+position:absolute;
+right:21px;
+bottom:25px;
+}
+
+#smallbuttons {
+position:absolute;
+left:21px;
+bottom:22px;
+font:bold 9px/18px Helvetica, 'Lucida Grande', sans-serif;
+-apple-dashboard-region:dashboard-region(control rectangle);
+}
+
+#smallbuttons div {
+display:inline-block;
+height:17px;
+}
+
+#donate {
+-webkit-border-image:url(Images/small-back-button-left.png) 0 4 0 4;
+border:0 4px 0 4px;
+padding:0 4px;
+}
+
+#donate:active {
+-webkit-border-image:url(Images/small-back-button-left-pressed.png) 0 4 0 4;
+}
+
+#help {
+-webkit-border-image:url(Images/small-back-button-right.png) 0 4 0 3;
+border:0 4px 0 3px;
+padding:0 4px 0 3px;
+margin-left:-3px;
+}
+
+#help:active {
+-webkit-border-image:url(Images/small-back-button-right-pressed.png) 0 4 0 3;
+}
+
+#back option[value="MarkerFelt-Thin"] { font-family:"MarkerFelt-Thin", sans-serif; }
+#back option[value="Helvetica"] { font-family:"Helvetica", sans-serif; }
+#back option[value="Lucida Grande"] { font-family:"Lucida Grande", sans-serif; }
+#back option[value="Futura"] { font-family:"Futura", sans-serif; }
+#back option[value="Optima"] { font-family:"Optima", sans-serif; }
+#back option[value="Gill Sans"] { font-family:"Gill Sans", sans-serif; }
+#back option[value="Baskerville"] { font-family:"Baskerville", sans-serif; }
+#back option[value="American Typewriter"] { font-family:"American Typewriter", sans-serif; }
+
+/* TITLE EDIT INPUT */
+li p.editing {
+}
+
+li p.editing span {
+background:transparent !important;
+display:block;
+outline:auto -webkit-focus-ring-color;
+outline-offset:-2px;
+-apple-dashboard-region:dashboard-region(control rectangle);
+-webkit-user-modify:read-write-plaintext-only;
+-webkit-user-select:text;
+text-decoration:none !important;
+}

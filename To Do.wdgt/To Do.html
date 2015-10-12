@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>To Do</title>
+    <style type="text/css">
+      @import "To Do.css";
+    </style>
+    <!-- localization -->
+      <script type="text/javascript" src="localizedStrings.js"></script>
+    <!-- apple code -->
+    <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleScrollArea.js"></script>
+    <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleScrollbar.js"></script>
+    <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleAnimator.js"></script>
+    <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleInfoButton.js"></script>
+    <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleButton.js"></script>
+    <!-- widgets code -->
+    <script type="text/javascript" src="Scripts/PreferenceStore.js"></script>
+    <script type="text/javascript" src="Scripts/Localization.js"></script>
+    <script type="text/javascript" src="Scripts/Display.js"></script>
+    <script type="text/javascript" src="Scripts/TaskStore.js"></script>
+    <script type="text/javascript" src="Scripts/CalendarStore.js"></script>
+    <script type="text/javascript" src="Scripts/HTMLBridge.js"></script>
+    <script type="text/javascript" src="Scripts/HUD.js"></script>
+    <script type="text/javascript" src="Scripts/Navigation.js"></script>
+  </head>
+  <body>
+    <div id="front">
+      <!-- rings -->
+      <div id="ringsresizing"></div>
+      <div id="rings"></div>
+      <div id="ringsleft"></div>
+      <div id="ringsright"></div><!-- left shadow -->
+      <div id="shadowleft"></div><!-- right shadow -->
+      <div id="shadowright"></div><!-- scroll area -->
+      <!-- front where the content is -->
+      <div id="frontbg">
+        <img src="Images/gradient.png" />
+        <!-- vertical red rulers -->
+        <div class="note-rule-vertical" style="left: 22px;"></div>
+        <div class="note-rule-vertical" style="left: 26px;"></div>
+        <!-- apple scroll area -->
+        <div id="scrollarea">
+          <!-- to do list -->
+          <ul id="list">
+          </ul>
+        </div>
+        <div id="scrollbar"></div>
+      </div>
+      <!-- faded images for nicer scrolling -->
+      <div id="topfade"></div>
+      <div id="bottomfade"></div>
+      <div id="protection1"></div>
+      <div id="taskInfoEditing">
+        <div class="hud left">
+          <div></div>
+          <div>
+            <p><label id="loc-notes" for="notesinput">Notes</label><textarea id="notesinput" onkeydown="event.stopPropagation();"></textarea></p>
+            <p><input id="urlinput" type="text" /></p>
+            <div><input type="checkbox" id="hasduedate" /> <label for="hasduedate" id="duedateplaceholder">Due Date</label>
+              <object style="visibility:hidden;" id="duedateinput" type="application/x-datepicker"></object>
+            </div>
+            <div class="hudbutton blue" id="loc-done">Done</div>
+          </div>
+          <div></div>
+        </div>
+      </div>
+      <div id="deleteConfirmation">
+        <div class="hud right">
+          <div></div>
+          <div>
+            <div class="hudbutton red" id="loc-delete">Delete</div>
+            <div class="hudbutton" id="loc-cancel">Cancel</div>
+          </div>
+          <div></div>
+        </div>
+      </div>
+      <div id="calendarSelection">
+        <div class="hud center">
+          <div></div>
+          <div>
+            <select id="calendarselectionvalue"><option value="none" id="loc-createin">Create in</option><optgroup label="──────────"></optgroup><optgroup label="──────────"><option id="loc-new" value="new">Create New Calendar</option></optgroup></select>
+            <div class="hudbutton" id="loc-cancel2">Cancel</div>
+          </div>
+          <div></div>
+        </div>
+      </div>
+      <div id="updateInformation">
+        <div class="hud none">
+          <div></div>
+          <div>
+            <p id="loc-update">Update Info</p>
+            <div class="hudbutton" id="loc-remind">Remind Me Later</div>
+            <div class="hudbutton" id="loc-details">Details</div>
+            <div class="hudbutton blue" id="loc-install">Install</div>
+          </div>
+          <div></div>
+        </div>
+      </div>
+      <div id="genericInformation">
+        <div class="hud none">
+          <div></div>
+          <div>
+            <p>Text</p>
+            <div class="hudbutton blue" id="loc-ok">OK</div>
+          </div>
+          <div></div>
+        </div>
+      </div>
+      <div id="newCalendarPrompt">
+        <div class="hud none">
+          <div></div>
+          <div>
+            <p><input id="newcalendarpromptvalue" type="search" placeholder="Title" /></p>
+            <div class="hudbutton blue" id="loc-create">Create Calendar</div>
+            <div class="hudbutton" id="loc-cancel3">Cancel</div>
+          </div>
+          <div></div>
+        </div>
+      </div>
+      <!-- bottom bar -->
+      <div id="bottombar">
+        <div id="edit"></div>
+        <div id="add"></div>
+        <div id="remove"></div>
+      </div>
+      <!-- resizing edge -->
+      <img id="resize" src="file:///System/Library/WidgetResources/resize.png" onmousedown="Display.startResizing(event);" />
+      <div id="calendar"><select><optgroup label="Show To Do’s in…" id="loc-showin"><option value="all" id="loc-allcals">All Calendars</option></optgroup><optgroup label="──────────"></optgroup><optgroup label="──────────"><option id="loc-new2" value="new">Create New Calendar</option></optgroup></select></div>
+      <!-- info button -->
+      <div id="infobutton"></div>
+      <div id="protection2"></div>
+    </div>
+    <div id="back">
+      <div id="preferencesnav"><div id="general" class="selected">General</div><div id="advanced" class="unselected">Advanced</div></div>
+      <div id="preferences1">
+        <!-- sort by preference -->
+        <p>
+          <label>
+            <span id="loc-sortby">Sort By</span>
+            <select id="sortKeyPreference">
+              <option value="dueDate" id="loc-duedate">Due Date</option>
+              <option value="priority" id="loc-priority">Priority</option>
+              <option value="title" id="loc-title">Title</option>
+              <option value="calendar" id="loc-calendar">Calendar</option>
+              <option value="completeness" id="loc-completeness">Completeness</option>
+            </select>
+          </label>
+        </p>
+        <!-- show calendar color preference -->
+        <p>
+          <label>
+            <input type="checkbox" id="showCalendarColorPreference" />
+            <span id="loc-showcolor">Show Color</span>
+          </label>
+        </p>
+        <!-- show priority preference -->
+        <p>
+          <label>
+            <input type="checkbox" id="showPriorityPreference" />
+            <span id="loc-showpriority">Show Priority</span>
+          </label>
+        </p>
+        <!-- show due date preference -->
+        <p>
+          <label>
+            <input type="checkbox" id="showDueDatePreference" />
+            <span id="loc-showduedate">Show Due Date</span>
+          </label>
+        </p>
+        <!-- font size and family preference -->
+        <p>
+          <label>
+            <span id="loc-font">Font</span>
+            <br>
+            <select id="fontFamilyPreference">
+              <option value="MarkerFelt-Thin">Marker Felt</option>
+              <option value="Helvetica">Helvetica</option>
+              <option value="Lucida Grande">Lucida Grande</option>
+              <option value="Futura">Futura</option>
+              <option value="Optima">Optima</option>
+              <option value="Gill Sans">Gill Sans</option>
+              <option value="Baskerville">Baskerville</option>
+              <option value="American Typewriter">American Typewriter</option>
+              <optgroup label="───────────">
+                <option value="other" id="loc-other">Other…</option>
+              </optgroup>
+            </select>
+          </label>
+          <select id="fontSizePreference">
+            <option value="xxs">12</option>
+            <option value="xs">13</option>
+            <option value="s">14</option>
+            <option value="m">15</option>
+            <option value="l">16</option>
+            <option value="xl">17</option>
+            <option value="xxl">18</option>
+          </select>
+          <input type="text" id="otherFontFamilyPreference" placeholder="Font" />
+        </p>
+      </div>
+      <div id="preferences2">
+        <!-- show completed tasks preference -->
+        <p>
+          <label>
+            <input type="checkbox" id="showCompletedTasksPreference" />
+            <span id="loc-showcompleted">Show Completed</span>
+          </label>
+        </p>
+        <!-- limit completed tasks preference -->
+        <p id="limitationPreference">
+          <label>
+            <input type="checkbox" id="limitCompletedTasksPreference" />
+            <span id="loc-limit1">hide after</span>
+          </label>
+          <input type="text" id="completedTasksLimitationPreference" maxlength="2" /><span id="loc-limit2">days</span>
+        </p>
+        <!-- single line preference -->
+        <p>
+          <label>
+            <input type="checkbox" id="singleLinePreference" />
+            <span id="loc-singleline">Single Line</span>
+          </label>
+        </p>
+        <!-- strike through preference -->
+        <p>
+          <label>
+            <input type="checkbox" id="strikeThroughPreference" />
+            <span id="loc-strike">Strike Through</span>
+          </label>
+        </p>
+        <!-- auto height adjust preference -->
+        <p>
+          <label>
+            <input type="checkbox" id="autoAdjustHeightPreference" />
+            <span id="loc-autoheight">Auto Height</span>
+          </label>
+        </p>
+      </div>
+      <!-- done button -->
+      <div id="glassbutton"></div>
+      <div id="smallbuttons">
+        <div id="donate" onclick="widget.openURL(PreferenceStore.URLs.donate)">Donate</div>
+        <div id="help" onclick="Plugin.openRelativeURL(PreferenceStore.URLs.help)">Help</div>
+      </div>
+    </div>
+  </body>
+</html>
