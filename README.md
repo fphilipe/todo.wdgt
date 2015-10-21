@@ -1,4 +1,4 @@
-<img src='http://todo.philipefatio.com/css/img/head.png' alt='To Do Widget' align='center' />
+<div style='text-align: center'><img src='http://todo.philipefatio.com/css/img/head.png' alt='To Do Widget' /></div>
 
 This is a widget for OS X Dashboard, originally released in December 2007. You
 can see some screenshots at
